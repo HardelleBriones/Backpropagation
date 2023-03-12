@@ -24,7 +24,7 @@ namespace Backpropagation
         private void button1_Click(object sender, EventArgs e)
         {
             //Naa sa forms duha kabuok ang input neuron tapos usa ang output (katong textbox)
-            nn = new NeuralNet(3, 15, 1);
+            nn = new NeuralNet(13, 10, 2);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Backpropagation
                     for (int j = 0; j < dataTable.Columns.Count; j++)
                     {
 
-
+                        //input all columns except the last column
                         if (j  < dataTable.Columns.Count-1)
                         {
                             nn.setInputs(j, Convert.ToDouble(dataTable.Rows[i][j].ToString()));
@@ -56,9 +56,19 @@ namespace Backpropagation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            nn.setInputs(0,Convert.ToDouble(textBox1.Text));
+            nn.setInputs(0, Convert.ToDouble(textBox1.Text));
             nn.setInputs(1, Convert.ToDouble(textBox2.Text));
-           nn.setInputs(2, Convert.ToDouble(textBox5.Text));
+            nn.setInputs(2, Convert.ToDouble(textBox5.Text));
+            nn.setInputs(3, Convert.ToDouble(textBox6.Text));
+            nn.setInputs(4, Convert.ToDouble(textBox7.Text));
+            nn.setInputs(5, Convert.ToDouble(textBox8.Text));
+            nn.setInputs(6, Convert.ToDouble(textBox9.Text));
+            nn.setInputs(7, Convert.ToDouble(textBox10.Text));
+            nn.setInputs(8, Convert.ToDouble(textBox11.Text));
+            nn.setInputs(9, Convert.ToDouble(textBox12.Text));
+            nn.setInputs(10, Convert.ToDouble(textBox13.Text));
+            nn.setInputs(11, Convert.ToDouble(textBox14.Text));
+            nn.setInputs(12, Convert.ToDouble(textBox15.Text));
             nn.run();
             textBox3.Text = "" + nn.getOuputData(0);
 
@@ -77,10 +87,10 @@ namespace Backpropagation
         private void button4_Click(object sender, EventArgs e)
         {
             
-            string filePath = "C:\\Users\\Hardelle\\Desktop\\car_data1.xlsx";
+            string filePath = "C:\\Users\\Hardelle\\Desktop\\smokedetection.xlsx";
 
             // Specify the sheet name
-            string sheetName = "car_data";
+            string sheetName = "Sheet1";
 
             // Specify the connection string
             string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={filePath};Extended Properties=\"Excel 12.0;HDR=YES;\"";
