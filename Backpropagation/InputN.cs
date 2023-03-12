@@ -8,7 +8,7 @@ namespace Backprop
 		private double input;
 		private double [] weights; // 64 2 neurons to be connected
 		private int wsize;
-		private int num;
+		//private int num;
 		static System.Random rand;
 		public INeuron()
 		{
