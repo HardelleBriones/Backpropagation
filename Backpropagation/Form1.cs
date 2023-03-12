@@ -19,6 +19,12 @@ namespace Backpropagation
         public Form1()
         {
             InitializeComponent();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.InitialDirectory = "C:\\";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.Filter = "Excel Files (*.xlsx)|*.xlsx";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -86,17 +92,19 @@ namespace Backpropagation
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
-            string filePath = "C:\\Users\\Hardelle\\Desktop\\smokedetection.xlsx";
+            if (DialogResult.OK == openFileDialog1.ShowDialog())
+            {
+                string filePath = openFileDialog1.FileName;
+                // Specify the sheet name
+                string sheetName = "Sheet1";
 
-            // Specify the sheet name
-            string sheetName = "Sheet1";
+                // Specify the connection string
+                string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={filePath};Extended Properties=\"Excel 12.0;HDR=YES;\"";
 
-            // Specify the connection string
-            string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={filePath};Extended Properties=\"Excel 12.0;HDR=YES;\"";
 
-            // Create a new DataTable to hold the data
-           
+
+
+
             try
             {
                 // Open a connection to the Excel file using the connection string
@@ -142,6 +150,8 @@ namespace Backpropagation
                     // Exit the loop if the user clicks cancel
                     break;
                 }
+            }
+
             }
             dataGridView1.DataSource = dataTable;
             dataGridView1.Dock = DockStyle.None;
